@@ -1,0 +1,6 @@
+LIBRARY vbonmruby
+
+EXPORTS
+
+
+vbonmruby_load_string

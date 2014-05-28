@@ -32,6 +32,16 @@ __stdcall int vbonmruby_load_string(
 	res = mrb_load_string(st1, run_str);
 
 	switch(mrb_type(res)) {
+		case 0:
+			if (st1->exc) {
+				res = mrb_funcall(st1, res, "inspect", 0);
+				snprintf(result, MAX_LEN-1, "%s\n", RSTRING_PTR(res));
+				res_num = -1;
+			} else {
+				result[0] = 0;
+				res_num = 0;
+			}
+			break;
 		case MRB_TT_FIXNUM:
 			snprintf(result, MAX_LEN-1, "%d", mrb_fixnum(res));
 			res_num = 1;

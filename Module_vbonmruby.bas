@@ -50,9 +50,9 @@ Public Function VB_run(runstr As String, ParamArray Params() As Variant) As Stri
   result_len = vbonmruby_load_string(runstr, pars, SPLIT_STR, Result, MAX_RETURN_LEN)
 
   Dim sss() As String
-  If result_len <> -1 Then
-    sss = Split(Result, SPLIT_STR)
-  End If
+  'If result_len <> -1 Then
+  sss = Split(Result, SPLIT_STR)
+  'End If
   VB_run = sss
 End Function
 

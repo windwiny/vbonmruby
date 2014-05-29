@@ -34,8 +34,8 @@ __stdcall int vbonmruby_load_string(
 	switch(mrb_type(res)) {
 		case 0:
 			if (st1->exc) {
-				res = mrb_funcall(st1, res, "inspect", 0);
-				snprintf(result, MAX_LEN-1, "%s\n", RSTRING_PTR(res));
+				mrb_value res2 = mrb_funcall(st1, mrb_obj_value(st1->exc), "inspect", 0);
+				snprintf(result, MAX_LEN-1, "%s\n", RSTRING_PTR(res2));
 				res_num = -1;
 			} else {
 				result[0] = 0;
